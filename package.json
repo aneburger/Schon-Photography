@@ -3,13 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack && babel backend/server.js -d backend/dist",
+    "start": "npm run build && node backend/dist/server.js"
   },
   "author": "arroww",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "css-loader": "^7.1.2",
     "express": "^5.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "style-loader": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.103.0",
+    "webpack-cli": "^6.0.1"
   }
 }
