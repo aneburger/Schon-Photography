@@ -1,6 +1,95 @@
 import React from "react";
+import { useState } from "react";
 
+{/* RECAPTHA IMPLEMENT!! */}
 const ContactForm = ({ onCancel }) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        number: '',
+        email: '',
+        type: '',
+        date: '',
+        venue: '',
+        details: ''
+    });
+
+    const initialFormState = {
+        name: '',
+        number: '',
+        email: '',
+        type: '',
+        date: '',
+        venue: '',
+        details: ''
+    }
+
+    const [errors, setErrors] = useState({});
+
+    const validateForm = (name, value) => {
+        let message = "";
+
+        if (name === "name") {
+            const fullName = value.trim().replace(/\s+/g, " ");
+            if (!value) {
+                message = "Full name is required.";
+            } else if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
+                message = "Invalid full name. Only letters, spaces, hyphens, and apostrophes allowed.";
+            }
+        }
+
+        if (name === "number") {
+            if (!value) {
+                message = "Phone number required.";
+            } else if (!/^\d{10,}$/.test(value)) {
+                message = "Phone number must contain only digits (min 10).";
+            }
+        }
+
+        if (name === "email") {
+            if (!value) {
+                message = "Email is required.";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                message = "Invalid email format.";
+            }
+        }
+
+        if (name === "type") {
+            if (!value || value === "Select option") {
+                message = "Please select a booking type.";
+            }
+        }
+
+        if (name === "date") {
+            if (!value) {
+                message = "Please select a date.";
+            }
+        }
+
+        if (name === "venue") {
+            const venueTrimmed = value.trim().replace(/\s+/g, " ");
+            if (!venueTrimmed) {
+                message = "Venue / Location is required.";
+            } else if (!/^[\p{L}\d]+(?:[-'@&][\p{L}\d]+)*(?:[ ,][\p{L}\d]+(?:[-'@&][\p{L}\d]+)*)*$/u.test(venueTrimmed)) {
+                message = "Invalid venue. Only letters, numbers, spaces, hyphens, apostrophes, commas, @, and & allowed.";
+            }
+        }
+
+        if (name === "details") {
+            if (!value) {
+                message = "Please provide some details.";
+            } else if (!/^[\p{L}\d\s'!\-]{1,500}$/u.test(value)) {
+                message = "Only letters, numbers, spaces, ', -, ! are allowed (max 500 chars).";
+            }
+        }
+
+        setErrors((prev) => ({...prev, [name]: message }));
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
     return (
         <div>
             <div>
@@ -15,37 +104,77 @@ const ContactForm = ({ onCancel }) => {
                 <h3>PERSONAL DETAILS</h3>
 
                 <label htmlFor="name">FULL NAME <span>*</span></label>
-                <input type="text" id="name" placeholder="Name & Surname" required />
+                <input type="text" id="name" placeholder="Name & Surname"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("name", e.target.value)}
+                />
+                {errors.name && <p className="error">{errors.name}</p>}
 
                 <label htmlFor="number">PHONE NUMBER <span>*</span></label>
-                <input type="text" id="number" placeholder="012 345 6789" required />
+                <input type="text" id="number" placeholder="012 345 6789"
+                        name="number"
+                        value={formData.number}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("number", e.target.value)}
+                />
+                {errors.number && <p className="error">{errors.number}</p>}
 
                 <label htmlFor="email">EMAIL <span>*</span></label>
-                <input type="email" id="email" placeholder="example@email.com" required />
+                <input type="email" id="email" placeholder="example@email.com" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("email", e.target.value)}
+                />
+                {errors.email && <p className="error">{errors.email}</p>}
 
                 <h3>BOOKING DETAILS</h3>
                 
                 <label htmlFor="type">BOOKING TYPE <span>*</span></label>
-                <select id="type" name="booking-type">
-                    <option defaultValue="Select option">Select option</option>
+                <select id="type" name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("type", e.target.value)}
+                >
+                    <option>Select option</option>
                     <option value="Wedding">Wedding</option>
                     <option value="Engagement">Engagement</option>
                     <option value="Couple Session">Couple Session</option>
                     <option value="Matric Farewell">Matric Farewell</option>
                     <option value="Other">Other</option>
                 </select>
+                {errors.type && <p className="error">{errors.type}</p>}
 
                 <label htmlFor="date">DATE <span>*</span></label>
-                <input type="date" id="date" placeholder="dd / mm / yy" required />
+                <input type="date" id="date" placeholder="dd / mm / yy" 
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("date", e.target.value)}
+                />
+                {errors.date && <p className="error">{errors.date}</p>}
 
                 <label htmlFor="venue">VENUE / LOCATION <span>*</span></label>
-                <input type="text" id="venue" placeholder="E.g. De Harte Wedding Venue, Pretoria" required />
+                <input type="text" id="venue" placeholder="E.g. De Harte Wedding Venue, Pretoria"
+                        name="venue"
+                        value={formData.venue}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("venue", e.target.value)}
+                />
+                {errors.venue && <p className="error">{errors.venue}</p>}
 
                 <label htmlFor="details">GIVE US SOME DETAILS! <span>*</span></label>
-                <textarea id="details" name="details" placeholder="Share anything you think is important for us to know. We can't wait to get to know you and capture your special moments!"></textarea>
+                <textarea id="details" name="details" placeholder="Share anything you think is important for us to know. We can't wait to get to know you and capture your special moments!" minLength="1" maxLength="500"
+                        value={formData.details}
+                        onChange={handleChange}
+                        onBlur={(e) => validateForm("details", e.target.value)}            
+                ></textarea>
+                {errors.details && <p className="error">{errors.details}</p>}
 
-                <button>Submit</button>
-                <button>Clear</button>
+                <button type="submit">Submit</button>
+                <button type="button">Clear</button>
             </form>
 
             <button onClick={onCancel}>Cancel</button>
