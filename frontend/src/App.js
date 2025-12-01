@@ -1,19 +1,29 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Portfolio from "./pages/Portfolio";
+import Weddings from "./pages/Weddings";
+import Engagements from "./pages/Engagements";
+import Formals from "./pages/Formals";
+import Couples from "./pages/Couples";
 
 const App = () => {
     return (
-        // <BrowserRouter>
-        // 	<div>
-        //     	<Routes>
-        //         		<Route path="/" element={<Home/>}/>
-        //         		<Route path="/plants" element={<Plants/>}/>
-        //     	</Routes>
-        // 	</div>
-        // </BrowserRouter>
-        <div>
-            Hellooooo
-        </div>
+        <BrowserRouter>
+        	<div>
+            	<Routes>
+                	<Route path="/" element={<Home/>}/>
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="/portfolio" element={<Portfolio/>}/>
+                    <Route path="/weddings" element={<Weddings/>}/>
+                    <Route path="/engagements" element={<Engagements/>}/>
+                    <Route path="/formals" element={<Formals/>}/>
+                    <Route path="/couples" element={<Couples/>}/>
+            	</Routes>
+        	</div>
+        </BrowserRouter>
     );
 }
 
-	export default App;
+export default App;
