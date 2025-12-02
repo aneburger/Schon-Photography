@@ -40,6 +40,8 @@ const ContactForm = ({ onCancel }) => {
             const fullName = value.trim().replace(/\s+/g, " ");
             if (!value) {
                 message = "Full name is required.";
+            } else if (value.length > 100) {
+                message = "Maximum 100 characters allowed.";
             } else if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
                 message = "Invalid full name. Only letters, spaces, hyphens, and apostrophes allowed.";
             }
@@ -48,6 +50,8 @@ const ContactForm = ({ onCancel }) => {
         if (name === "number") {
             if (!value) {
                 message = "Phone number required.";
+            } else if (value.length > 50) {
+                message = "Maximum 50 characters allowed.";
             } else if (!/^\d{10,}$/.test(value)) {
                 message = "Phone number must contain only digits (min 10).";
             }
@@ -56,6 +60,8 @@ const ContactForm = ({ onCancel }) => {
         if (name === "email") {
             if (!value) {
                 message = "Email is required.";
+            } else if (value.length > 50) {
+                message = "Maximum 50 characters allowed.";
             } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
                 message = "Invalid email format.";
             }
@@ -70,6 +76,8 @@ const ContactForm = ({ onCancel }) => {
         if (name === "date") {
             if (!value) {
                 message = "Please select a date.";
+            } else if (value.length > 50) {
+                message = "Maximum 50 characters allowed.";
             }
         }
 
@@ -77,6 +85,8 @@ const ContactForm = ({ onCancel }) => {
             const venueTrimmed = value.trim().replace(/\s+/g, " ");
             if (!venueTrimmed) {
                 message = "Venue / Location is required.";
+            } else if (value.length > 100) {
+                message = "Maximum 100 characters allowed.";
             } else if (!/^[\p{L}\d]+(?:[-'@&][\p{L}\d]+)*(?:[ ,][\p{L}\d]+(?:[-'@&][\p{L}\d]+)*)*$/u.test(venueTrimmed)) {
                 message = "Invalid venue. Only letters, numbers, spaces, hyphens, apostrophes, commas, @, and & allowed.";
             }
@@ -85,8 +95,10 @@ const ContactForm = ({ onCancel }) => {
         if (name === "details") {
             if (!value) {
                 message = "Please provide some details.";
-            } else if (!/^[\p{L}\d\s'!\-]{1,500}$/u.test(value)) {
-                message = "Only letters, numbers, spaces, ', -, ! are allowed (max 500 chars).";
+            } else if (value.length > 200) {
+                message = "Maximum 200 characters allowed.";
+            } else if (!/^[\p{L}\d\s'!\-]{1,200}$/u.test(value)) {
+                message = "Only letters, numbers, spaces, ', -, ! are allowed (max 200 chars).";
             }
         }
 
@@ -104,8 +116,8 @@ const ContactForm = ({ onCancel }) => {
                 <h1>GET IN TOUCH</h1>
                 <p>Every story begins with a simple hello. If something in our work resonates with you, we'd love to hear your vision.</p>
                 <p>Please complete the form below to enquire. We can't wait to connect with you!</p>
-                <p>schon.photography@gmail.com</p>
-                <p>+27 12 345 6789</p>
+                <p>daneschonborn@gmail.com</p>
+                <p>+27 72 065 7083</p>
             </div>
 
             <form>
@@ -117,6 +129,7 @@ const ContactForm = ({ onCancel }) => {
                         value={formData.name}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("name", e.target.value)}
+                        maxLength={100}
                 />
                 {errors.name && <p className="error">{errors.name}</p>}
 
@@ -126,6 +139,7 @@ const ContactForm = ({ onCancel }) => {
                         value={formData.number}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("number", e.target.value)}
+                        maxLength={50}
                 />
                 {errors.number && <p className="error">{errors.number}</p>}
 
@@ -135,6 +149,7 @@ const ContactForm = ({ onCancel }) => {
                         value={formData.email}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("email", e.target.value)}
+                        maxLength={50}
                 />
                 {errors.email && <p className="error">{errors.email}</p>}
 
@@ -161,6 +176,7 @@ const ContactForm = ({ onCancel }) => {
                         value={formData.date}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("date", e.target.value)}
+                        maxLength={50}
                 />
                 {errors.date && <p className="error">{errors.date}</p>}
 
@@ -170,11 +186,14 @@ const ContactForm = ({ onCancel }) => {
                         value={formData.venue}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("venue", e.target.value)}
+                        maxLength={100}
                 />
                 {errors.venue && <p className="error">{errors.venue}</p>}
 
                 <label htmlFor="details">GIVE US SOME DETAILS! <span>*</span></label>
-                <textarea id="details" name="details" placeholder="Share anything you think is important for us to know. We can't wait to get to know you and capture your special moments!" minLength="1" maxLength="500"
+                <textarea id="details" name="details" placeholder="Share anything you think is important for us to know. We can't wait to get to know you and capture your special moments!" 
+                        minLength={1} 
+                        maxLength={200}
                         value={formData.details}
                         onChange={handleChange}
                         onBlur={(e) => validateForm("details", e.target.value)}            
