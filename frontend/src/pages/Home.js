@@ -1,3 +1,11 @@
+/*****************************************
+ * Created On: 2025 / 12 / 01
+ * Last Modified: 2025 / 12 / 01
+ * 
+ * Author: Ané Burger t.a. Arroww Web Dev
+ * 
+******************************************/
+
 import React from "react";
 import Footer from "../components/Footer";
 import Connect from "../components/Connect";
