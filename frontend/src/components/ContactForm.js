@@ -9,7 +9,14 @@
 import React from "react";
 import { useState } from "react";
 
-{/* RECAPTHA IMPLEMENT!! */}
+{/* RECAPTHA IMPLEMENT!! 
+    toast notif wanneer form submitted!
+    
+    */}
+
+
+
+
 const ContactForm = ({ onCancel }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -32,6 +39,8 @@ const ContactForm = ({ onCancel }) => {
     }
 
     const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
+    const [serverMessage, setServerMessage] = useState('');
 
     const validateForm = (name, value) => {
         let message = "";
@@ -110,6 +119,46 @@ const ContactForm = ({ onCancel }) => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setServerMessage('');
+
+        const fields = Object.keys(formData);
+        fields.forEach((field) => validateForm(field, formData[field]));
+        const hasErrors = Object.values(errors).some((msg) => msg);
+        if (hasErrors) return;
+
+        setSubmitting(true);
+        try {
+            const token = await window.grecaptcha.execute('6Le9YB8sAAAAAP33qDBA_cPPKvud-xjmqmgWQCHJ', { action: 'contact_submit' });
+            const res = await fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...formData, captchaToken: token, captchaAction: 'contact_submit' }),
+                credentials: 'same-origin'
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                if (data?.errors) setErrors((prev) => ({ ...prev, ...data.errors }));
+                setServerMessage(data?.message || 'Something went wrong. Please try again.');
+            } else {
+                setServerMessage('Thank you! Your enquiry has been sent.');
+                setFormData(initialFormState);
+            }
+        } catch (err) {
+            setServerMessage('Network error. Please try again later.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    const handleClear = () => {
+        setFormData(initialFormState);
+        setErrors({});
+        setServerMessage('');
+    };
+
     return (
         <div>
             <div>
@@ -120,7 +169,7 @@ const ContactForm = ({ onCancel }) => {
                 <p>+27 72 065 7083</p>
             </div>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h3>PERSONAL DETAILS</h3>
 
                 <label htmlFor="name">FULL NAME <span>*</span></label>
@@ -200,10 +249,10 @@ const ContactForm = ({ onCancel }) => {
                 ></textarea>
                 {errors.details && <p className="error">{errors.details}</p>}
 
-                <button type="submit">Submit</button>
-                <button type="button">Clear</button>
+                <button type="submit" disabled={submitting}>{submitting ? 'Submitting...' : 'Submit'}</button>
+                <button type="button" onClick={handleClear}>Clear</button>
             </form>
-
+            {serverMessage && <p>{serverMessage}</p>}
             <button onClick={onCancel}>Cancel</button>
         </div>
     );

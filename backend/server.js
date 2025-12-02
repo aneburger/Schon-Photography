@@ -11,27 +11,80 @@ import path from 'path';
 import validator from 'validator';
 import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
-import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
+
+app.use(helmet({ contentSecurityPolicy: false }));
+
+const contactLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// app.use(express.static("frontend/public"));
+app.use(express.static(path.resolve('frontend', 'public')));
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
-app.use(express.static("frontend/public"));
 
 
 function sanitizeInput(input) {
-	return DOMPurify.sanitize(input, {
-		USE_PROFILES: { html: false },
-	}).trim();
+  const safe = typeof input === 'string' ? input : '';
+  return DOMPurify.sanitize(safe, {
+    USE_PROFILES: { html: false },
+  }).trim();
 }
 
+function onlyDigits(str) {
+  return (str || '').replace(/\D+/g, '');
+}
 
-app.post("/contact", (req, res) => {
+app.post("/contact", contactLimiter, async (req, res) => {
+	try {
+		const token = sanitizeInput(req.body.captchaToken);
+		const action = sanitizeInput(req.body.captchaAction);
+		if (!token) return res.status(400).json({ success: false, message: "Captcha required." });
+
+		const secret = process.env.RECAPTCHA_SECRET;
+		const minScore = parseFloat(process.env.RECAPTCHA_MIN_SCORE || '0.5');
+
+		const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: new URLSearchParams({
+			secret,
+			response: token,
+			remoteip: req.ip
+		})
+		});
+
+		const verifyData = await verifyRes.json();
+		if (!verifyData.success) {
+			return res.status(429).json({ success: false, message: "Captcha verification failed." });
+		}
+		// Optional action check (v3 may include action)
+		if (verifyData.action && action && verifyData.action !== action) {
+			return res.status(429).json({ success: false, message: "Captcha action mismatch." });
+		}
+		if (typeof verifyData.score === 'number' && verifyData.score < minScore) {
+			return res.status(429).json({ success: false, message: "Captcha score too low." });
+		}
+	} catch (e) {
+		return res.status(429).json({ success: false, message: "Captcha verification error." });
+	}
+
+
 	const errors = {};
 	let {name, number, email, type, date, venue, details} = req.body;
 
@@ -52,15 +105,19 @@ app.post("/contact", (req, res) => {
 
 	if(!name) {
 		errors.name = "Full name is required.";
-	} else if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
-        errors.name = "Invalid full name.";
-    }
+	} else {
+		const fullName = name.replace(/\s+/g, ' ').trim();
+		if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
+			errors.name = "Invalid full name.";
+		}
+	}
 
+	const digitsOnly = onlyDigits(number);
 	if (!number) {
-        errors.number = "Phone number required.";
-    } else if (!validator.isNumeric(number) || number.length < 10) {
-        errors.number = "Phone number must be at least 10 digits.";
-    }
+		errors.number = "Phone number required.";
+	} else if (digitsOnly.length < 10) {
+		errors.number = "Phone number must be at least 10 digits.";
+	}
 
 	if (!email) {
         errors.email = "Email is required.";
@@ -82,7 +139,7 @@ app.post("/contact", (req, res) => {
 
 	if (!date) {
         errors.date = "Date is required.";
-    } else if (!validator.isISO8601(date)) {
+    } else if (!validator.isISO8601(date, {strict: true})) {
         errors.date = "Invalid date format.";
     }
 
@@ -102,9 +159,42 @@ app.post("/contact", (req, res) => {
         return res.status(400).json({ success: false, errors });
     }
 
+	try {
+		const formId = process.env.FORMSPARK_FORM_ID;
+		if (!formId) {
+			return res.status(500).json({ success: false, message: "Formspark is not configured." });
+		}
 
+		const payload = {
+			name,
+			phone: number,
+			email,
+			type,
+			date,
+			venue,
+			details
+		};
 
-	res.status(200).json({ success: true, message: "Form submitted successfully." });
+		const fsRes = await fetch(`https://submit.formspark.io/${formId}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			},
+			body: JSON.stringify(payload)
+		});
+
+		const fsData = await fsRes.json().catch(() => ({}));
+		if (!fsRes.ok) {
+			const msg = fsData?.error || fsData?.message || 'Failed to deliver via Formspark.';
+			return res.status(502).json({ success: false, message: msg });
+		}
+		return res.status(200).json({ success: true, message: "Form submitted successfully." });
+	
+	} catch (err) {
+		console.error('Formspark error:', err);
+		return res.status(502).json({ success: false, message: "Failed to send email." });
+  	}
 
 });
 
