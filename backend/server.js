@@ -111,7 +111,7 @@ app.post("/contact", contactLimiter, async (req, res) => {
 		errors.name = "Full name is required.";
 	} else {
 		const fullName = name.replace(/\s+/g, ' ').trim();
-		if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
+		if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)*$/u.test(fullName)) {
 			errors.name = "Invalid full name.";
 		}
 	}

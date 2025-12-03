@@ -51,7 +51,7 @@ const ContactForm = ({ onCancel }) => {
                 message = "Full name is required.";
             } else if (value.length > 100) {
                 message = "Maximum 100 characters allowed.";
-            } else if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)+$/u.test(fullName)) {
+            } else if (!/^[\p{L}]+(?:[-'][\p{L}]+)*(?: [\p{L}]+(?:[-'][\p{L}]+)*)*$/u.test(fullName)) {
                 message = "Invalid full name. Only letters, spaces, hyphens, and apostrophes allowed.";
             }
         }
