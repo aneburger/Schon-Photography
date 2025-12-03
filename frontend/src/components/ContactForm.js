@@ -165,7 +165,7 @@ const ContactForm = ({ onCancel }) => {
                 <h1>GET IN TOUCH</h1>
                 <p>Every story begins with a simple hello. If something in our work resonates with you, we'd love to hear your vision.</p>
                 <p>Please complete the form below to enquire. We can't wait to connect with you!</p>
-                <p>daneschonborn@gmail.com</p>
+                <p>If we do not come back to you within 24hrs contact: daneschonborn@gmail.com</p>
                 <p>+27 72 065 7083</p>
             </div>
 
