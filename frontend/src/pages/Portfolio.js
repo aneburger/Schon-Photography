@@ -16,10 +16,11 @@ const Portfolio = () => {
         <div>
             <PortfolioTitle/>
 
-            <Link to="/weddings">Weddings</Link>
-            <Link to="/engagements">Engagements</Link>
-            <Link to="/formals">Formals</Link>
-            <Link to="/couples">Couples</Link>
+            <Link to="/portfolio/weddings">Weddings</Link>
+            <Link to="/portfolio/engagements">Engagements</Link>
+            <Link to="/portfolio/formals">Formals</Link>
+            <Link to="/portfolio/couples">Couples</Link>
+            <Link to="/portfolio/family">Family</Link>
 
             <Footer/>
         </div>
