@@ -14,6 +14,10 @@ import createDOMPurify from 'dompurify';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import { URLSearchParams } from 'url';
+
+import FormData from "form-data"; 
+import Mailgun from "mailgun.js";
 
 dotenv.config();
 
@@ -73,7 +77,7 @@ app.post("/contact", contactLimiter, async (req, res) => {
 		if (!verifyData.success) {
 			return res.status(429).json({ success: false, message: "Captcha verification failed." });
 		}
-		// Optional action check (v3 may include action)
+		
 		if (verifyData.action && action && verifyData.action !== action) {
 			return res.status(429).json({ success: false, message: "Captcha action mismatch." });
 		}
@@ -159,42 +163,60 @@ app.post("/contact", contactLimiter, async (req, res) => {
         return res.status(400).json({ success: false, errors });
     }
 
+
+
 	try {
-		const formId = process.env.FORMSPARK_FORM_ID;
-		if (!formId) {
-			return res.status(500).json({ success: false, message: "Formspark is not configured." });
-		}
+        const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY || process.env.API_KEY;
+        const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN; 
+        const TO_EMAIL = process.env.TO_EMAIL;            
+        const FROM_EMAIL = process.env.FROM_EMAIL || `postmaster@${MAILGUN_DOMAIN}`;
 
-		const payload = {
-			name,
-			phone: number,
-			email,
-			type,
-			date,
-			venue,
-			details
-		};
+        if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN || !TO_EMAIL) {
+            return res.status(500).json({ success: false, message: "Email service not configured." });
+        }
+		
+		const mailgun = new Mailgun(FormData);
+        const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
 
-		const fsRes = await fetch(`https://submit.formspark.io/${formId}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Accept': 'application/json'
-			},
-			body: JSON.stringify(payload)
-		});
+        const subject = `New ${type} enquiry from ${name}`;
+        const textBody = `Name: ${name}
+						Phone: ${number}
+						Email: ${email}
+						Type: ${type}
+						Date: ${date}
+						Venue: ${venue}
+						Details:
+						${details}`;
 
-		const fsData = await fsRes.json().catch(() => ({}));
-		if (!fsRes.ok) {
-			const msg = fsData?.error || fsData?.message || 'Failed to deliver via Formspark.';
-			return res.status(502).json({ success: false, message: msg });
-		}
-		return res.status(200).json({ success: true, message: "Form submitted successfully." });
-	
-	} catch (err) {
-		console.error('Formspark error:', err);
-		return res.status(502).json({ success: false, message: "Failed to send email." });
-  	}
+        const htmlBody = `
+            <h2>New Booking Enquiry</h2>
+            <p><strong>Name:</strong> ${validator.escape(name)}</p>
+            <p><strong>Phone:</strong> ${validator.escape(number)}</p>
+            <p><strong>Email:</strong> ${validator.escape(email)}</p>
+            <p><strong>Type:</strong> ${validator.escape(type)}</p>
+            <p><strong>Date:</strong> ${validator.escape(date)}</p>
+            <p><strong>Venue:</strong> ${validator.escape(venue)}</p>
+            <p><strong>Details:</strong><br/>${validator.escape(details)}</p>
+        `;
+
+        const data = await mg.messages.create(MAILGUN_DOMAIN, {
+            from: `Booking Form <${FROM_EMAIL}>`,
+            to: [TO_EMAIL],
+            subject,
+            text: textBody,
+            html: htmlBody
+        });
+		
+        return res.status(200).json({ success: true, message: "Form submitted successfully." });
+    } catch (error) {
+        console.error("Mailgun error:", error);
+        
+        const msg =
+            error?.message ||
+            error?.response?.body?.message ||
+            "Failed to send email.";
+        return res.status(502).json({ success: false, message: msg });
+    }
 
 });
 
