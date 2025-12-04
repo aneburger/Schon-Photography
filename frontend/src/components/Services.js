@@ -12,7 +12,7 @@ import Contact from "./Contact";
 
 const Services = () => {
   return (
-    <section className="bg-[#F0F6EA]">
+    <section id="services" className="bg-[#F0F6EA]">
       {/* Title */}
       <div className="bg-[#D1DDC6] text-[#4A6741] font-montserrat px-4 sm:px-6 lg:px-8 py-10 lg:py-14 text-center">
         <h2 className="text-[22px] sm:text-[24px] lg:text-[28px] font-medium tracking-wide">

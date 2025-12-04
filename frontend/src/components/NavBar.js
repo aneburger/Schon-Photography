@@ -7,7 +7,7 @@
 ******************************************/
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import ContactForm from "./ContactForm";
 
 const NAV_TEXT = "#2F4926";
@@ -44,6 +44,9 @@ const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0);
     onScroll();
@@ -63,6 +66,22 @@ const NavBar = () => {
     setPortfolioOpen(false);
   };
   const closeContact = () => setContactOpen(false);
+
+
+  const goToServices = () => {
+    const doScroll = () => {
+      const el = document.getElementById("services");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    closeMenu();
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Give React a tick to render home before scrolling
+      setTimeout(doScroll, 80);
+    } else {
+      doScroll();
+    }
+  };
 
   return (
     <>
@@ -120,6 +139,15 @@ const NavBar = () => {
                 <Link to="/about" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base tracking-wide">
                   ABOUT
                 </Link>
+              </li>
+
+              <li>
+                <button
+                  onClick={goToServices}
+                  className="block w-full text-xs md:text-sm lg:text-base tracking-wide"
+                >
+                  PRICING & SERVICES
+                </button>
               </li>
 
               {/* Portfolio dropdown */}
