@@ -317,7 +317,7 @@ const ContactForm = ({ onCancel }) => {
 
             {/* Contact info note, shown left on desktop, below inputs on mobile */}
             <div className="mt-6 text-center lg:text-left text-xs sm:text-sm font-light">
-              <p>If we do not get back to you within 24hrs, please contact us on:</p>
+              <p>If we do not get back to you within 24hrs, please contact us at:</p>
               <p className="mt-2">daneschonborn@gmail.com</p>
               <p>+27 12 345 6789</p>
             </div>

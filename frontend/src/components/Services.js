@@ -11,49 +11,100 @@ import { Link } from "react-router-dom";
 import Contact from "./Contact";
 
 const Services = () => {
-    return (
-        <div style={{border: "1px solid black", marginTop: "4em", marginBottom: "4em"}}>
-            <h1>SERVICES & INVESTMENT</h1>
-            <h3>MORE INFORMATION ABOUT PRICING, PACKAGES, AND WHAT TO EXPECT</h3>
-            <p>For a more comprehensive overview or to enquire about additional sessions, please feel free to reach out, and we will happily provide the information.</p>
-            
-            {/* React/UI component met cards langs mekaar en hover effects. */}
-            <div id="w-package" style={{border: "1px solid black", marginTop: "2em"}}>
-                <h2>WEDDING PACKAGES</h2>
-                <h3>STARTING AT R9 800</h3>
-                <p>Fill in our contact form to receive our full wedding packages for all the details.</p>
-                <Contact buttonText={"Enquire"}/>
-            </div>
+  return (
+    <section className="bg-[#F0F6EA]">
+      {/* Title */}
+      <div className="bg-[#D1DDC6] text-[#4A6741] font-montserrat px-4 sm:px-6 lg:px-8 py-10 lg:py-14 text-center">
+        <h2 className="text-[22px] sm:text-[24px] lg:text-[28px] font-medium tracking-wide">
+          SERVICES & INVESTMENT
+        </h2>
+        <h3 className="mt-4 text-[14px] sm:text-[16px] lg:text-[18px] font-normal">
+          MORE INFORMATION ABOUT PRICING, PACKAGES, AND WHAT TO EXPECT
+        </h3>
+        <p className="mt-6 max-w-3xl mx-auto text-[13px] sm:text-[14px] lg:text-[16px] leading-relaxed">
+          For a more comprehensive overview or to enquire about additional sessions,
+          please feel free to reach out, and we will happily provide the information.
+        </p>
+      </div>
 
-            <div id="e-package" style={{border: "1px solid black", marginTop: "2em"}}>
-                <h2>ENGAGEMENT PACKAGES</h2>
-                <h3>STARTING AT R850</h3>
-                <p>For a surprise engagement, send us a message and we'll help you make sure every moment is captured.</p>
-                <Contact buttonText={"Enquire"}/>
-            </div>
+      {/* Cards */}
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* Wedding */}
+          <ServiceCard
+            title="WEDDING PACKAGES"
+            subtitle="FROM R9 800"
+            copy="Fill in our contact form to receive our full wedding packages for all the details."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879048/VanSandwykBruidspaar-41_km6fnp.jpg"
+          />
 
-            <div id="f-package" style={{border: "1px solid black", marginTop: "2em"}}>
-                <h2>FORMAL PACKAGES</h2>
-                <h3>STARTING AT R1000</h3>
-                <p>Matric Farewell packages start at 1 hour per couple. Feel free to reach out if you're booking for a larger group.</p>
-                <Contact buttonText={"Enquire"}/>
-            </div>
+          {/* Engagement */}
+          <ServiceCard
+            title="ENGAGEMENT PACKAGES"
+            subtitle="FROM R850"
+            copy="For a surprise engagement, send us a message and we'll help you make sure every moment is captured."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879234/WLKerkpleinSchonPhotography-165_klbgxj.jpg"
+          />
 
-            <div id="c-package" style={{border: "1px solid black", marginTop: "2em"}}>
-                <h2>COUPLE SESSIONS</h2>
-                <h3>STARTING AT R600</h3>
-                <p>All couple sessions are one hour minimum. You're welcome to enquire about extended session options.</p>
-                <Contact buttonText={"Enquire"}/>
-            </div>
+          {/* Formal */}
+          <ServiceCard
+            title="FORMAL PACKAGES"
+            subtitle="FROM R1000"
+            copy="Matric Farewell packages start at 1 hour per couple. Feel free to reach out if you're booking for a larger group."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879345/MelindieenStephan-15_jk6r7x.jpg"
+          />
 
-            <div id="fam-package" style={{border: "1px solid black", marginTop: "2em"}}>
-                <h2>FAMILY SESSIONS</h2>
-                <h3>STARTING AT R850</h3>
-                <p>To capture your family's memories.</p>
-                <Contact buttonText={"Enquire"}/>
-            </div>
+          {/* Couples */}
+          <ServiceCard
+            title="COUPLE SESSIONS"
+            subtitle="FROM R600"
+            copy="All couple sessions are one hour minimum. You're welcome to enquire about extended session options."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879430/JH-6_j8frlv.jpg"
+          />
+
+          {/* Family (spans full width on laptop for balance) */}
+          <ServiceCard
+            title="FAMILY SESSIONS"
+            subtitle="FROM R850"
+            copy="To capture your family's memories."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879540/SchonLifestyleOMPreviews-6_logts0.jpg"
+            className="lg:col-span-2"
+          />
         </div>
-    );
-}
+      </div>
+    </section>
+  );
+};
+
+const ServiceCard = ({ title, subtitle, copy, img, className = "" }) => {
+  return (
+    <div className={`relative rounded-2xl overflow-hidden ${className}`}>
+      {/* Image */}
+      <img
+        src={img}
+        alt=""
+        className="w-full h-[420px] sm:h-[460px] lg:h-[400px] xl:h-[440px] object-cover"
+        loading="lazy"
+      />
+      {/* Overlay: #304529 at 52% */}
+      <div className="absolute inset-0 bg-[#304529]/[0.52]" />
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 sm:px-8">
+        <h2 className="text-white font-montserrat font-regular text-[20px] sm:text-[24px] lg:text-[26px] tracking-wide">
+          {title}
+        </h2>
+        <h3 className="mt-2 text-white/90 font-montserrat text-[14px] sm:text-[15px] lg:text-[16px] tracking-wide">
+          {subtitle}
+        </h3>
+        <p className="mt-4 max-w-md text-white/90 font-montserrat font-light text-[10px] sm:text-[14px] lg:text-[15px] leading-relaxed">
+          {copy}
+        </p>
+        <div className="mt-6">
+          <Contact buttonText={"Get a Quote"} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Services;

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <section className="bg-[#91A083] text-[#F0F6EA] font-montserrat">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 px-6 lg:px-8 py-10 lg:py-20">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-8 px-6 lg:px-8 py-10 lg:py-20">
         {/* Image */}
         <div className="overflow-hidden rounded-2xl">
           <img
@@ -25,10 +25,10 @@ const Welcome = () => {
         {/* Copy */}
         <div>
           <h1 className="leading-tight">
-            <span className="block text-[28px] lg:text-[56px] font-light tracking-wide">
+            <span className="block text-[24px] lg:text-[48px] font-light tracking-wide">
               WELCOME TO
             </span>
-            <span className="block text-[28px] lg:text-[56px] font-normal tracking-wide whitespace-nowrap max-[410px]:whitespace-normal">
+            <span className="block text-[24px] lg:text-[48px] font-normal tracking-wide whitespace-nowrap max-[410px]:whitespace-normal">
               SCHÖN PHOTOGRAPHY
             </span>
           </h1>
