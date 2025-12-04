@@ -17,6 +17,8 @@ body { background: #F0F6EA; }
 
 .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
+.font-playfair { font-family: 'Playfair Display', sans-serif; }
+
 #schon, #tagline {
     font-family: 'Montserrat';
 }
