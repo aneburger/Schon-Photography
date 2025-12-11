@@ -107,7 +107,7 @@ const Footer = () => {
       </div>
 
       {/* Floating Back to Top button (moved up/left + thinner arrow) */}
-      {showTop && (
+      {showTop && !isContactOpen && (
         <button
           type="button"
           onClick={scrollToTop}

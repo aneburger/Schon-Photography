@@ -27,11 +27,6 @@ const App = () => {
                         <Route path="/" element={<Home/>}/>
                         <Route path="/about" element={<About/>}/>
                         <Route path="/portfolio" element={<Portfolio/>}/>
-                        <Route path="/portfolio/weddings" element={<Weddings/>}/>
-                        <Route path="/portfolio/engagements" element={<Engagements/>}/>
-                        <Route path="/portfolio/formals" element={<Formals/>}/>
-                        <Route path="/portfolio/couples" element={<Couples/>}/>
-                        <Route path="/portfolio/family" element={<Family/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>

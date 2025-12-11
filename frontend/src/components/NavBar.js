@@ -16,10 +16,9 @@ const HamburgerIcon = ({ className = "" }) => (
   <svg
     aria-hidden="true"
     viewBox="0 0 24 24"
-    className={className}
+    className={`${className} stroke-[1.1]`}
     fill="none"
     stroke={NAV_TEXT}
-    strokeWidth="2"
   >
     <path d="M3 6h18M3 12h18M3 18h18" />
   </svg>
@@ -29,10 +28,9 @@ const CloseIcon = ({ className = "" }) => (
   <svg
     aria-hidden="true"
     viewBox="0 0 24 24"
-    className={className}
+    className={`${className} stroke-[1.1]`}
     fill="none"
     stroke={NAV_TEXT}
-    strokeWidth="2"
   >
     <path d="M6 6l12 12M18 6l-12 12" />
   </svg>
@@ -160,46 +158,8 @@ const NavBar = () => {
                     <Link to="/portfolio" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base tracking-wide">
                         PORTFOLIO
                     </Link>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className={`w-4 h-4 transition-transform ${portfolioOpen ? "rotate-180" : "rotate-0"}`}
-                      fill="none"
-                      stroke={NAV_TEXT}
-                      strokeWidth="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
                   </span>
                 </button>
-                {portfolioOpen && (
-                  <ul className="mt-4 space-y-4">
-                    <li>
-                      <Link to="/portfolio/weddings" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base">
-                        Weddings
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio/engagements" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base">
-                        Engagements
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio/formals" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base">
-                        Formals
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio/couples" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base">
-                        Couples
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio/family" onClick={closeMenu} className="block text-xs md:text-sm lg:text-base">
-                        Family
-                      </Link>
-                    </li>
-                  </ul>
-                )}
               </li>
 
               <li>

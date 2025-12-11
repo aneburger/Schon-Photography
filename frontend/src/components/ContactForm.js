@@ -1,6 +1,6 @@
 /*****************************************
  * Created On: 2025 / 12 / 01
- * Last Modified: 2025 / 12 / 01
+ * Last Modified: 2025 / 12 / 11
  * 
  * Author: Ané Burger t.a. Arroww Web Dev
  * 
@@ -8,13 +8,6 @@
 
 import React from "react";
 import { useState } from "react";
-
-{/* RECAPTHA IMPLEMENT!! 
-    toast notif wanneer form submitted!
-    
-*/}
-
-
 
 
 const ContactForm = ({ onCancel }) => {
@@ -159,103 +152,6 @@ const ContactForm = ({ onCancel }) => {
         setServerMessage('');
     };
 
-    // return (
-    //     <div>
-    //         <div>
-    //             <h1>GET IN TOUCH</h1>
-    //             <p>Every story begins with a simple hello. If something in our work resonates with you, we'd love to hear your vision.</p>
-    //             <p>Please complete the form below to enquire. We can't wait to connect with you!</p>
-    //             <p>If we do not come back to you within 24hrs contact: daneschonborn@gmail.com</p>
-    //             <p>+27 72 065 7083</p>
-    //         </div>
-
-    //         <form onSubmit={handleSubmit}>
-    //             <h3>PERSONAL DETAILS</h3>
-
-    //             <label htmlFor="name">FULL NAME <span>*</span></label>
-    //             <input type="text" id="name" placeholder="Name & Surname"
-    //                     name="name"
-    //                     value={formData.name}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("name", e.target.value)}
-    //                     maxLength={100}
-    //             />
-    //             {errors.name && <p className="error">{errors.name}</p>}
-
-    //             <label htmlFor="number">PHONE NUMBER <span>*</span></label>
-    //             <input type="text" id="number" placeholder="012 345 6789"
-    //                     name="number"
-    //                     value={formData.number}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("number", e.target.value)}
-    //                     maxLength={50}
-    //             />
-    //             {errors.number && <p className="error">{errors.number}</p>}
-
-    //             <label htmlFor="email">EMAIL <span>*</span></label>
-    //             <input type="email" id="email" placeholder="example@email.com" 
-    //                     name="email"
-    //                     value={formData.email}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("email", e.target.value)}
-    //                     maxLength={50}
-    //             />
-    //             {errors.email && <p className="error">{errors.email}</p>}
-
-    //             <h3>BOOKING DETAILS</h3>
-                
-    //             <label htmlFor="type">BOOKING TYPE <span>*</span></label>
-    //             <select id="type" name="type"
-    //                     value={formData.type}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("type", e.target.value)}
-    //             >
-    //                 <option>Select option</option>
-    //                 <option value="Wedding">Wedding</option>
-    //                 <option value="Engagement">Engagement</option>
-    //                 <option value="Couple Session">Couple Session</option>
-    //                 <option value="Matric Farewell">Matric Farewell</option>
-    //                 <option value="Other">Other</option>
-    //             </select>
-    //             {errors.type && <p className="error">{errors.type}</p>}
-
-    //             <label htmlFor="date">DATE <span>*</span></label>
-    //             <input type="date" id="date" placeholder="dd / mm / yy" 
-    //                     name="date"
-    //                     value={formData.date}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("date", e.target.value)}
-    //                     maxLength={50}
-    //             />
-    //             {errors.date && <p className="error">{errors.date}</p>}
-
-    //             <label htmlFor="venue">VENUE / LOCATION <span>*</span></label>
-    //             <input type="text" id="venue" placeholder="E.g. De Harte Wedding Venue, Pretoria"
-    //                     name="venue"
-    //                     value={formData.venue}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("venue", e.target.value)}
-    //                     maxLength={100}
-    //             />
-    //             {errors.venue && <p className="error">{errors.venue}</p>}
-
-    //             <label htmlFor="details">GIVE US SOME DETAILS! <span>*</span></label>
-    //             <textarea id="details" name="details" placeholder="Share anything you think is important for us to know. We can't wait to get to know you and capture your special moments!" 
-    //                     minLength={1} 
-    //                     maxLength={200}
-    //                     value={formData.details}
-    //                     onChange={handleChange}
-    //                     onBlur={(e) => validateForm("details", e.target.value)}            
-    //             ></textarea>
-    //             {errors.details && <p className="error">{errors.details}</p>}
-
-    //             <button type="submit" disabled={submitting}>{submitting ? 'Submitting...' : 'Submit'}</button>
-    //             <button type="button" onClick={handleClear}>Clear</button>
-    //         </form>
-    //         {serverMessage && <p>{serverMessage}</p>}
-    //         <button onClick={onCancel}>Cancel</button>
-    //     </div>
-    // );
 
     return (
         <div
@@ -267,7 +163,7 @@ const ContactForm = ({ onCancel }) => {
             onClick={onCancel}
             className="absolute right-4 top-4 p-1"
         >
-            <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="#2F4926" strokeWidth="2">
+            <svg viewBox="0 0 24 24" className="w-6 h-6 stroke-[1.1]" fill="none" stroke="#2F4926">
             <path d="M6 6l12 12M18 6l-12 12" />
             </svg>
         </button>
