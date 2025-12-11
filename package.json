@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "netlify dev",
-    "build": "npm run tailwind:build && cd frontend && npm run build",
-    "tailwind:dev": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --watch",
-    "tailwind:build": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --minify"
+    "tailwind:build": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --minify",
+    "build": "npm run tailwind:build && npm run build:frontend",
+    "build:frontend": "webpack --mode production",
+    "build:backend": "babel backend -d backend/dist",
+    "start": "npm run build:backend && node backend/dist/server.js"
   },
   "author": "arroww",
   "license": "ISC",
