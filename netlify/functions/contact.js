@@ -11,9 +11,16 @@ const DOMPurify = createDOMPurify(window);
 
 // ---------------- UTILITIES ----------------
 
+// function sanitizeInput(input) {
+//   const safe = typeof input === "string" ? input : "";
+//   return DOMPurify.sanitize(safe, { USE_PROFILES: { html: false } }).trim();
+// }
+
 function sanitizeInput(input) {
-  const safe = typeof input === "string" ? input : "";
-  return DOMPurify.sanitize(safe, { USE_PROFILES: { html: false } }).trim();
+  if (typeof input !== "string") return "";
+  const trimmed = input.trim();
+  const noControl = validator.stripLow(trimmed, true);
+  return noControl.replace(/[<>]/g, "");
 }
 
 function onlyDigits(str) {
