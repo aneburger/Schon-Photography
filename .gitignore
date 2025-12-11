@@ -13,3 +13,5 @@ npm-debug.log*
 
 # Build artifacts
 backend/dist/
+# Local Netlify folder
+.netlify
