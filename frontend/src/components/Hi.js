@@ -11,7 +11,11 @@ import React from "react";
 const Hi = () => {
     return (
         <div style={{border: "1px solid black", marginTop: "1em"}}>
-            {/* Dane en Liana image */}
+            <div id="images-of-us">
+                <img alt="About Us" src="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765447736/DLStudio-7_h4am53.jpg"/>
+                <img alt="About Us" src="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765447742/DLStudio-5_syyguu.jpg"/>
+                <img alt="About Us" src="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765447738/DLStudio-8_n1584r.jpg"/>
+            </div>
             <h1>HI, WE'RE THE <b>SCHÖN</b>BORN'S</h1>
             <h4>DANÉ & LIANA</h4>
             <h5>a.k.a. Blom & Liaans</h5>

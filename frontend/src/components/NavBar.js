@@ -209,19 +209,13 @@ const NavBar = () => {
               </li>
 
               {/* Social icons row */}
-              <li className="pt-2">
-                <div className="flex items-center justify-center gap-6">
+              <li className="pt-1 pr-2">
+                <div className="flex items-center justify-center gap-3">
                   <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="p-1">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke={NAV_TEXT} strokeWidth="2">
-                      <path d="M9 8h6M12 8v12M9 12h6" />
-                    </svg>
+                    <img alt="Facebook" src="/assets/images/facebook.png" className="h-4 w-4" />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-1">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke={NAV_TEXT} strokeWidth="2">
-                      <rect x="4" y="4" width="16" height="16" rx="4" />
-                      <circle cx="12" cy="12" r="4" />
-                      <circle cx="17" cy="7" r="1" />
-                    </svg>
+                  <a href="https://www.instagram.com/schon.weddings" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-1">
+                    <img alt="Instagram" src="/assets/images/insta.png" className="h-4 w-4" />
                   </a>
                 </div>
               </li>
