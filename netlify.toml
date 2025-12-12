@@ -1,5 +1,7 @@
+[build.environment]
+  node_version = "20"
+
 [build]
-  node_version = "18"
   command = "npm run build"
   publish = "/frontend/public"
 
