@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'path';
 import validator from 'validator';
-import { JSDOM } from 'jsdom';
-import createDOMPurify from 'dompurify';
+// import { JSDOM } from 'jsdom';
+// import createDOMPurify from 'dompurify';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -25,14 +25,19 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
+// const window = new JSDOM('').window;
+// const DOMPurify = createDOMPurify(window);
 
 function sanitizeInput(input) {
-  const safe = typeof input === 'string' ? input : '';
-  return DOMPurify.sanitize(safe, {
-    USE_PROFILES: { html: false },
-  }).trim();
+//   const safe = typeof input === 'string' ? input : '';
+//   return DOMPurify.sanitize(safe, {
+//     USE_PROFILES: { html: false },
+//   }).trim();
+
+    if (typeof input !== "string") return "";
+    const trimmed = input.trim();
+    const noControl = validator.stripLow(trimmed, true);
+    return noControl.replace(/[<>]/g, "");
 }
 
 function onlyDigits(str) {
