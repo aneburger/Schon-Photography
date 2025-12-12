@@ -11,6 +11,8 @@ import FormData from 'form-data';
 import Mailgun from 'mailgun.js';
 import serverless from 'serverless-http';
 
+const router = express.Router();
+
 dotenv.config();
 
 const app = express();
@@ -44,7 +46,7 @@ function onlyDigits(str) {
   return (str || '').replace(/\D+/g, '');
 }
 
-app.post('/contact', contactLimiter, async (req, res) => {
+router.post('/contact', contactLimiter, async (req, res) => {
   try {
     const token = sanitizeInput(req.body.captchaToken);
     const action = sanitizeInput(req.body.captchaAction);
@@ -195,6 +197,9 @@ ${details}`;
     return res.status(502).json({ success: false, message: msg });
   }
 });
+
+app.use('/', router);
+app.use('/.netlify/functions/api', router);
 
 // Export wrapped handler for Netlify
 export const handler = serverless(app);
