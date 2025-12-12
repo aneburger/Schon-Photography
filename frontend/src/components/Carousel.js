@@ -9,10 +9,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const images = [
-  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764780914/Venue_Dekor-91_wbngzd.jpg", // car1
-  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764780910/C_MEngagementSchonPhotography-225_szqbiq.jpg", // car2
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582258/web-8_iazale.jpg", // car1
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582036/web-16_diu9ss.jpg", // car2
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764780908/VanSandwykBruidspaar-77_wuqcaj.jpg", // car3
-  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764780908/WLKerkpleinSchonPhotography-12_mmfapy.jpg", // car4
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582260/RivierplaasA_MSchonPhotog-573_cjk0zf.jpg", // car4
 ];
 
 const Carousel = () => {

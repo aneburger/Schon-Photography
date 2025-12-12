@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "tailwind:build": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --minify",
+    "tailwind:dev": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --watch",
     "build:frontend": "webpack --mode production",
     "build": "npm run tailwind:build && npm run build:frontend",
     "build:backend": "babel backend -d backend/dist",
