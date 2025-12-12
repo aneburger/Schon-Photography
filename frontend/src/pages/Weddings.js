@@ -69,6 +69,53 @@ const WEDDING_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765479567/Venue_Dekor-18_uazupb.jpg",
     alt: "Close-up of an elegant wedding table setting.",
   },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582258/web-8_iazale.jpg",
+    alt: "Umbrella.",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582036/web-16_diu9ss.jpg",
+    alt: "Aisle",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582956/VanSandwykTroue-321_o6fpf1.jpg",
+    alt: "Groom.",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582958/VanSandwykTroue-399_tuorjd.jpg",
+    alt: "Groom.",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582959/web-12_gxhmls.jpg",
+    alt: "Bride",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582961/web-4_pvgs02.jpg",
+    alt: "Couple",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582964/web-9_lohi8i.jpg",
+    alt: "Close-Up.",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582965/web-2_fvrrgq.jpg",
+    alt: "Bride",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582967/web-7_c86ovk.jpg",
+    alt: "Bride and Groom",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582966/RivierplaasA_MSchonPhotog-24_gdbza3.jpg",
+    alt: "Decor.",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582965/VanSandwykTroue-1031_ny5ld9.jpg",
+    alt: "Flowers",
+  }
 ];
 
 const Weddings = ({ onClose }) => {
