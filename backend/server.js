@@ -22,7 +22,7 @@ import Mailgun from "mailgun.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(express.json({ limit: '10kb' }));
 
@@ -61,7 +61,7 @@ app.post("/contact", contactLimiter, async (req, res) => {
 		if (!token) return res.status(400).json({ success: false, message: "Captcha required." });
 
 		const secret = process.env.RECAPTCHA_SECRET;
-		const minScore = parseFloat(process.env.RECAPTCHA_MIN_SCORE || '0.5');
+		const minScore = parseFloat(process.env.RECAPTCHA_MIN_SCORE);
 
 		const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
 		method: 'POST',
