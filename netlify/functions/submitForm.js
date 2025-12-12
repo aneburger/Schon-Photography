@@ -72,7 +72,7 @@ export const handler = async (event) => {
     );
 
     const verifyData = await verifyRes.json();
-    console.log("reCAPTCHA verifyData:", verifyData);
+    // console.log("reCAPTCHA verifyData:", verifyData);
 
     if (!verifyData.success) {
       return {
