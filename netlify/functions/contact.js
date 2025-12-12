@@ -6,8 +6,8 @@ import Mailgun from "mailgun.js";
 import fetch from "node-fetch";
 import { URLSearchParams } from "url";
 
-const window = new JSDOM("").window;
-const DOMPurify = createDOMPurify(window);
+// const window = new JSDOM("").window;
+// const DOMPurify = createDOMPurify(window);
 
 // ---------------- UTILITIES ----------------
 
