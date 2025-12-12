@@ -1,27 +1,27 @@
 import validator from "validator";
-// import { JSDOM } from "jsdom";
-// import createDOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
+import createDOMPurify from "dompurify";
 import FormData from "form-data";
 import Mailgun from "mailgun.js";
 import fetch from "node-fetch";
 import { URLSearchParams } from "url";
 
-// const window = new JSDOM("").window;
-// const DOMPurify = createDOMPurify(window);
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
 
 // ---------------- UTILITIES ----------------
 
-// function sanitizeInput(input) {
-//   const safe = typeof input === "string" ? input : "";
-//   return DOMPurify.sanitize(safe, { USE_PROFILES: { html: false } }).trim();
-// }
-
 function sanitizeInput(input) {
-  if (typeof input !== "string") return "";
-  const trimmed = input.trim();
-  const noControl = validator.stripLow(trimmed, true);
-  return noControl.replace(/[<>]/g, "");
+  const safe = typeof input === "string" ? input : "";
+  return DOMPurify.sanitize(safe, { USE_PROFILES: { html: false } }).trim();
 }
+
+// function sanitizeInput(input) {
+//   if (typeof input !== "string") return "";
+//   const trimmed = input.trim();
+//   const noControl = validator.stripLow(trimmed, true);
+//   return noControl.replace(/[<>]/g, "");
+// }
 
 function onlyDigits(str) {
   return (str || "").replace(/\D+/g, "");
@@ -66,7 +66,7 @@ export const handler = async (event) => {
         body: new URLSearchParams({
           secret,
           response: token,
-          remoteip: event.headers["x-nf-client-connection-ip"] || "",
+          // remoteip: event.headers["x-nf-client-connection-ip"] || "",
         }),
       }
     );
