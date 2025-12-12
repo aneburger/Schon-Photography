@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && babel backend/server.js -d backend/dist",
-    "start": "npm run build && node backend/dist/server.js",
-    "tailwind:dev": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --watch",
-    "tailwind:build": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --minify"
+    "tailwind:build": "tailwindcss -i ./frontend/public/assets/style/input.css -o ./frontend/public/assets/style/style.css --minify",
+    "build:frontend": "webpack --mode production",
+    "build": "npm run tailwind:build && npm run build:frontend",
+    "build:backend": "babel backend -d backend/dist",
+    "start": "npm run build:backend && node backend/dist/server.js"
   },
   "author": "arroww",
   "license": "ISC",
