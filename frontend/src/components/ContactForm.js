@@ -123,8 +123,8 @@ const ContactForm = ({ onCancel }) => {
 
         setSubmitting(true);
         try {
-            const token = await window.grecaptcha.execute('6Le-gyksAAAAAOYdcQl_QZMOxgahLtYWPM2mL0_-', { action: 'contact_submit' });
-            const res = await fetch('/.netlify/functions/contact', {
+            const token = await window.grecaptcha.execute('6Le9YB8sAAAAAP33qDBA_cPPKvud-xjmqmgWQCHJ', { action: 'contact_submit' });
+            const res = await fetch('/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, captchaToken: token, captchaAction: 'contact_submit' }),
