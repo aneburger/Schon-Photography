@@ -46,7 +46,7 @@ function onlyDigits(str) {
   return (str || '').replace(/\D+/g, '');
 }
 
-router.post('/contact', contactLimiter, async (req, res) => {
+router.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     const token = sanitizeInput(req.body.captchaToken);
     const action = sanitizeInput(req.body.captchaAction);
