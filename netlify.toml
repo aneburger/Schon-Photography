@@ -1,7 +1,11 @@
 [build]
+  node_version = "18"
   command = "npm run build"
-  publish = "frontend/public"
-  functions = "netlify/functions"
+  publish = "/frontend/public"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/*"
