@@ -1,6 +1,5 @@
 [build.environment]
   node_version = "20"
-  NPM_FLAGS = "--include=dev"
 
 [build]
   command = "npm run build"
