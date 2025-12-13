@@ -93,10 +93,6 @@ const FAMILY_IMAGES = [
   {
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584323/GroblersRietondaleSchon-135_wnlhre.jpg",
     alt: "Family Image",
-  },
-  {
-    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584325/LettauJacaranda-1_b1l5ub.jpg",
-    alt: "Family Image",
   }
 ];
 

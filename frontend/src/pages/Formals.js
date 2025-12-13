@@ -98,10 +98,6 @@ const FORMAL_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583881/StefanJohaneDinee-11_twy1kb.jpg",
     alt: "Formal Image",
   },
-  {
-    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583884/SSMXA-136_unbn3r.jpg",
-    alt: "Formal Image",
-  },
 
   {
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583889/MikoAlwynHazelwood-34_bq5dud.jpg",
