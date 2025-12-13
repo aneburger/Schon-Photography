@@ -17,7 +17,6 @@ const IMAGES = [
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877703/MelindieenStephan-30_kmwiyo.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877711/VanSandwykBruidspaar-16_umklat.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877692/JH-8_pdyjsd.jpg",
-  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877701/C_MEngagementSchonPhotography-145_conbwl.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764780908/WLKerkpleinSchonPhotography-12_mmfapy.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877955/ReghardtAlexa-127_p8jvi8.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764878010/EEEngagement-88_ytbukt.jpg",
