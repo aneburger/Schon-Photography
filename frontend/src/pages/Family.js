@@ -58,22 +58,46 @@ const FAMILY_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765487112/SchonLifestyleDuPlooyFam-82_xva9hv.jpg",
     alt: "Family Image",
   },
-//   {
-//     src: "",
-//     alt: "Family Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Family Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Family Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Family Image",
-//   },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584308/SchonLifestyleDuPlooyFam-122_ozawae.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584309/DeWetFamily-44_su7pid.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584316/DeWetFamily-2_tl8yl4.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584320/DeWetFamily-105_bdfoqf.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584320/LettauJacaranda-73_xhuo9b.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584319/GroblersRietondaleSchon-132_bjajev.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584320/GroblersRietondaleSchon-9_zfpzvw.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584323/GroblersRietondaleSchon-6_buz8da.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584323/GroblersRietondaleSchon-135_wnlhre.jpg",
+    alt: "Family Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584325/LettauJacaranda-1_b1l5ub.jpg",
+    alt: "Family Image",
+  }
 ];
 
 const Family = ({ onClose }) => {

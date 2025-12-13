@@ -58,22 +58,30 @@ const COUPLES_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765486698/C_MEngagementSchonPhotography-27_pxpcvv.jpg",
     alt: "Couples Image",
   },
-//   {
-//     src: "",
-//     alt: "Couples Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Couples Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Couples Image",
-//   },
-//   {
-//     src: "",
-//     alt: "Couples Image",
-//   },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584088/WLKerkpleinSchonPhotography-11_pib3lc.jpg",
+    alt: "Couples Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584087/GroblersRietondaleSchon-189_xpoqm8.jpg",
+    alt: "Couples Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584084/GroblersRietondaleSchon-197_gvqr48.jpg",
+    alt: "Couples Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584081/JohnTenHelene-9_pm08jm.jpg",
+    alt: "Couples Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584088/WLKerkpleinSchonPhotography-41_e7cqn6.jpg",
+    alt: "Couples Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584094/GroblersRietondaleSchon-61_gwnkcq.jpg",
+    alt: "Couples Image",
+  },
 ];
 
 const Couples = ({ onClose }) => {

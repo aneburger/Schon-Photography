@@ -70,6 +70,46 @@ const ENGAGE_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765480251/EEEngagement-70_dbyvrv.jpg",
     alt: "Engagement Image",
   },
+
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583573/Andreas_LarissaVerlowing-37_zrpawe.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583577/OMDinokengEngagementSchonPhotography-25_fa8jsz.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583574/Andreas_LarissaVerlowing-24_wj2acq.jpg",
+    alt: "Engagement Image",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583579/RiekertMiya-23_a2n04o.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583579/WLVerlowingSchonPhotography-149_spsd36.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583581/D_DSchonPhotography-49_u5urxo.jpg",
+    alt: "Engagement Image",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583581/RiekertMiya-141_vxje9n.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583582/Andreas_LarissaVerlowing-19_zykhse.jpg",
+    alt: "Engagement Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583588/MarnusAnzelleIreneFarm-102_pagqcz.jpg",
+    alt: "Engagement Image",
+  },
 ];
 
 const Engagements = ({ onClose }) => {

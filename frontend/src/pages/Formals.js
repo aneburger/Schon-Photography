@@ -74,6 +74,39 @@ const FORMAL_IMAGES = [
     src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765485809/KarliRuanSchonPhotos-26_kqauee.jpg",
     alt: "Formal Image",
   },
+
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583874/NikhaMXA-189_un0yks.jpg",
+    alt: "Formal Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583876/Xandri_Marno-160_z2pjhi.jpg",
+    alt: "Formal Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583879/SSMXA-138_ov3sit.jpg",
+    alt: "Formal Image",
+  },
+
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583880/StefanJohaneDinee-76_iecfbl.jpg",
+    alt: "Formal Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583881/StefanJohaneDinee-11_twy1kb.jpg",
+    alt: "Formal Image",
+  },
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583884/SSMXA-136_unbn3r.jpg",
+    alt: "Formal Image",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765583889/MikoAlwynHazelwood-34_bq5dud.jpg",
+    alt: "Formal Image",
+  },
 ];
 
 const Formals = ({ onClose }) => {

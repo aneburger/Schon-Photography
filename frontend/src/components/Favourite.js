@@ -22,7 +22,12 @@ const IMAGES = [
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764877955/ReghardtAlexa-127_p8jvi8.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764878010/EEEngagement-88_ytbukt.jpg",
   "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764878052/JLDetails-5_hjaxcb.jpg",
-  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764878409/Venue_Dekor-61_xvafcc.jpg"
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764878409/Venue_Dekor-61_xvafcc.jpg",
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765584320/DeWetFamily-105_bdfoqf.jpg",
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582258/web-8_iazale.jpg",
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582964/web-9_lohi8i.jpg",
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582956/VanSandwykTroue-321_o6fpf1.jpg",
+  "https://res.cloudinary.com/dgc7pj1dx/image/upload/v1765582967/web-7_c86ovk.jpg"
 ];
 
 const Favourite = () => {

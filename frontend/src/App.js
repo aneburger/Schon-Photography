@@ -17,11 +17,13 @@ import Formals from "./pages/Formals";
 import Couples from "./pages/Couples";
 import Family from "./pages/Family";
 import NavBar from "./components/NavBar";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
     return (
             <BrowserRouter>
                 <NavBar/>
+                <ScrollToTop/>
                 <div>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
