@@ -13,7 +13,7 @@ import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+// import rateLimit from 'express-rate-limit';
 import { URLSearchParams } from 'url';
 
 import FormData from "form-data"; 
@@ -28,12 +28,12 @@ app.use(express.json({ limit: '10kb' }));
 
 app.use(helmet({ contentSecurityPolicy: false }));
 
-const contactLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 10,
-  standardHeaders: true,
-  legacyHeaders: false,
-});
+// const contactLimiter = rateLimit({
+//   windowMs: 60 * 1000,
+//   max: 10,
+//   standardHeaders: true,
+//   legacyHeaders: false,
+// });
 
 // app.use(express.static("frontend/public"));
 app.use(express.static(path.resolve('frontend', 'public')));
@@ -54,7 +54,7 @@ function onlyDigits(str) {
   return (str || '').replace(/\D+/g, '');
 }
 
-app.post("/contact", contactLimiter, async (req, res) => {
+app.post("/contact", async (req, res) => {
 	try {
 		const token = sanitizeInput(req.body.captchaToken);
 		const action = sanitizeInput(req.body.captchaAction);

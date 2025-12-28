@@ -682,6 +682,9 @@
   .bg-\[\#304529\]\/55 {
     background-color: color-mix(in oklab, #304529 55%, transparent);
   }
+  .bg-\[\#304529\]\/100 {
+    background-color: #304529;
+  }
   .bg-\[\#304529\]\/\[0\.52\] {
     background-color: color-mix(in oklab, #304529 52%, transparent);
   }

@@ -1,6 +1,6 @@
 /*****************************************
  * Created On: 2025 / 12 / 01
- * Last Modified: 2025 / 12 / 01
+ * Last Modified: 2025 / 12 / 27
  * 
  * Author: Ané Burger t.a. Arroww Web Dev
  * 
@@ -69,8 +69,8 @@ const Carousel = () => {
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isFading ? 'opacity-100' : 'opacity-100'}`}
       />
 
-      {/* Green overlay (#304529 at 55% opacity) */}
-      <div className="absolute inset-0 bg-[#304529]/55" />
+      {/* Black overlay (#00000040 at 25% opacity) */}
+      <div className="absolute inset-0 bg-[#00000040]/25" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-white px-6">
