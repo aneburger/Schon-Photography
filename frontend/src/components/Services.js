@@ -1,14 +1,12 @@
 /*****************************************
  * Created On: 2025 / 12 / 01
- * Last Modified: 2025 / 12 / 01
+ * Last Modified: 2026 / 01 / 18
  * 
  * Author: Ané Burger t.a. Arroww Web Dev
  * 
 ******************************************/
 
 import React from "react";
-import { Link } from "react-router-dom";
-import Contact from "./Contact";
 
 const Services = () => {
   return (
@@ -30,15 +28,26 @@ const Services = () => {
       {/* Cards */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+
           {/* Wedding */}
           <ServiceCard
             title="WEDDING PACKAGES"
-            subtitle="FROM R9 800"
-            copy="Fill in our contact form to receive our full wedding packages for all the details."
+            subtitle="FROM R6 500"
+            copy= "We offer full-day, half-day and light coverage wedding packages."
             img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879048/VanSandwykBruidspaar-41_km6fnp.jpg"
+            pdfFileName="wedding.pdf"
           />
 
-          {/* Engagement */}
+          {/* Lifestyle */}
+          <ServiceCard
+            title="LIFESTYLE PACKAGES"
+            subtitle="FROM R800"
+            copy="We offer engagement, couples, matric farewell/formals, family and event packages."
+            img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879430/JH-6_j8frlv.jpg"
+            pdfFileName="lifestyle.pdf"
+          />
+
+          {/* Engagement
           <ServiceCard
             title="ENGAGEMENT PACKAGES"
             subtitle="FROM R850"
@@ -46,15 +55,13 @@ const Services = () => {
             img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879234/WLKerkpleinSchonPhotography-165_klbgxj.jpg"
           />
 
-          {/* Formal */}
           <ServiceCard
             title="FORMAL PACKAGES"
             subtitle="FROM R1000"
             copy="Matric Farewell packages start at 1 hour per couple. Feel free to reach out if you're booking for a larger group."
             img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879345/MelindieenStephan-15_jk6r7x.jpg"
           />
-
-          {/* Couples */}
+ 
           <ServiceCard
             title="COUPLE SESSIONS"
             subtitle="FROM R600"
@@ -62,21 +69,31 @@ const Services = () => {
             img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879430/JH-6_j8frlv.jpg"
           />
 
-          {/* Family (spans full width on laptop for balance) */}
           <ServiceCard
             title="FAMILY SESSIONS"
             subtitle="FROM R850"
             copy="To capture your family's memories."
             img="https://res.cloudinary.com/dgc7pj1dx/image/upload/v1764879540/SchonLifestyleOMPreviews-6_logts0.jpg"
             className="lg:col-span-2"
-          />
+          /> */}
+
         </div>
       </div>
     </section>
   );
 };
 
-const ServiceCard = ({ title, subtitle, copy, img, className = "" }) => {
+const ServiceCard = ({ title, subtitle, copy, img, pdfFileName, className = "" }) => {
+  
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = `/assets/pdfs/${pdfFileName}`;
+    link.download = pdfFileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
   return (
     <div className={`relative rounded-2xl overflow-hidden ${className}`}>
       {/* Image */}
@@ -100,7 +117,10 @@ const ServiceCard = ({ title, subtitle, copy, img, className = "" }) => {
           {copy}
         </p>
         <div className="mt-6">
-          <Contact buttonText={"Get a Quote"} />
+          {/* <Contact buttonText={"Get a Quote"} /> */}
+          <button type="button" onClick={handleDownload}>
+            Download Pricing Guide
+          </button>
         </div>
       </div>
     </div>
